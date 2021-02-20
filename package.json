@@ -1,0 +1,45 @@
+{
+  "name": "junior-adventurers-frontend",
+  "version": "0.1.0",
+  "description": "website for 2nd grade class",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lunchboxer/junior-adventurers-frontend"
+  },
+  "scripts": {
+    "lint": "eslint svelte --fix",
+    "dev": "snowpack dev",
+    "minify-css": "postcss public/index.css > public/index.min.css",
+    "build": "npm run minify-css && snowpack build",
+"build:staging": "NODE_ENV=staging npm run build",
+"build:prod": "NODE_ENV=production npm run build",
+    "start": "http-server build"
+  },
+  "devDependencies": {
+    "@architect/sandbox": "^3.3.6",
+    "@begin/data": "latest",
+    "@graphql-eslint/eslint-plugin": "^0.8.0",
+    "@snowpack/plugin-svelte": "^3.5.2",
+    "cssnano": "^4.1.10",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.18.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "eslint-plugin-svelte3": "^3.0.0",
+    "eslint-plugin-unicorn": "^27.0.0",
+    "graphql": "^15.5.0",
+    "http-server": "^0.12.3",
+    "nanoid": "^3.1.20",
+    "postcss": "^8.2.6",
+    "postcss-cli": "^8.3.1",
+    "prettier": "^2.2.1",
+    "prettier-plugin-svelte": "^2.1.1",
+    "snowpack": "^3.0.11",
+    "stylelint-config-recommended": "^3.0.0",
+    "svelte": "^3.32.0",
+    "svelte-spa-router": "^3.1.0"
+  }
+}
