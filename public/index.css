@@ -62,7 +62,7 @@ html {
       var(--background-overlay-color),
       var(--background-overlay-color)
     ),
-    url(mountains-banner.jpg) no-repeat center center fixed; /* Public Domain image from Pixabay */
+    url(mountains-banner.webp) no-repeat center center fixed; /* Public Domain image from Pixabay */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

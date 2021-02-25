@@ -7,19 +7,22 @@
     "url": "https://github.com/lunchboxer/junior-adventurers-frontend"
   },
   "scripts": {
-    "lint": "eslint svelte --fix",
+    "lint": "eslint src --fix",
     "dev": "snowpack dev",
     "minify-css": "postcss public/index.css > public/index.min.css",
     "build": "npm run minify-css && snowpack build",
-"build:staging": "NODE_ENV=staging npm run build",
-"build:prod": "NODE_ENV=production npm run build",
+    "build:staging": "NODE_ENV=staging npm run build",
+    "upload:staging": "NODE_ENV=staging oss-upload build -o '/' -C",
+    "deploy:staging": "npm run build:staging && npm run upload:staging",
+    "build:prod": "NODE_ENV=production npm run build",
+    "upload:prod": "NODE_ENV=production oss-upload build -o '/' -C",
+    "deploy:prod": "npm run build:prod && npm run upload:prod",
+    "deploy": "npm run deploy:staging && npm run deploy:prod",
     "start": "http-server build"
   },
   "devDependencies": {
-    "@architect/sandbox": "^3.3.6",
-    "@begin/data": "latest",
-    "@graphql-eslint/eslint-plugin": "^0.8.0",
     "@snowpack/plugin-svelte": "^3.5.2",
+    "ali-oss-upload-cli": "^1.3.0",
     "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
     "eslint": "^7.18.0",
@@ -30,9 +33,7 @@
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-svelte3": "^3.0.0",
     "eslint-plugin-unicorn": "^27.0.0",
-    "graphql": "^15.5.0",
     "http-server": "^0.12.3",
-    "nanoid": "^3.1.20",
     "postcss": "^8.2.6",
     "postcss-cli": "^8.3.1",
     "prettier": "^2.2.1",
@@ -40,6 +41,7 @@
     "snowpack": "^3.0.11",
     "stylelint-config-recommended": "^3.0.0",
     "svelte": "^3.32.0",
-    "svelte-spa-router": "^3.1.0"
+    "svelte-spa-router": "^3.1.0",
+    "tinro": "^0.5.13"
   }
 }
