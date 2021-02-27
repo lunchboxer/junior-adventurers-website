@@ -1,7 +1,7 @@
 require('dotenv').config()
 /** @type {import("snowpack").SnowpackUserConfig } */
 let endpoint
-switch (process.env.NODE_ENV) {
+switch (process.env.STAGE) {
   case 'production':
     endpoint = process.env.SNOWPACK_PUBLIC_PROD_API_ENDPOINT
     break
