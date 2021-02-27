@@ -8,7 +8,7 @@ module.exports = {
     es6: true,
     browser: true,
   },
-  ignorePatterns: ['**/dist/*'],
+  ignorePatterns: ['**/dist/*', '*.html'],
   plugins: ['svelte3', 'security'],
   overrides: [
     {
