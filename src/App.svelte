@@ -5,10 +5,6 @@
   import Header from './components/Header.svelte'
   import ThemeLoader from './components/themes/ThemeLoader.svelte'
   import Footer from './components/Footer.svelte'
-
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-  }
 </script>
 
 <ThemeLoader />
