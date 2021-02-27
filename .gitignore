@@ -6,4 +6,4 @@ notes.org
 .tern-port
 /build
 .env
-.min.css
+*.min.css
