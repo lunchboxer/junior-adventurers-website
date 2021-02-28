@@ -1,7 +1,7 @@
 <script>
   import { location } from 'svelte-spa-router'
   import { fly } from 'svelte/transition'
-  import { auth } from '../data/auth'
+  import { auth } from '$data/auth'
   import NavLink from './NavLink.svelte'
 
   let shownav = false

@@ -1,8 +1,8 @@
 <script>
   import { onMount } from 'svelte'
   import { pop, push } from 'svelte-spa-router'
-  import { notifications } from '../components/notifications'
-  import { auth } from '../data/auth'
+  import { notifications } from '$components/notifications'
+  import { auth } from '$data/auth'
 
   async function wait(ms) {
     return new Promise(resolve => {

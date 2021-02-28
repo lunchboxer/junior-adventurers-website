@@ -1,11 +1,11 @@
 <script>
   import { onMount } from 'svelte'
   import { pop, push } from 'svelte-spa-router'
-  import { auth } from '../data/auth'
-  import { notifications } from '../components/notifications'
-  import Input from '../components/Input.svelte'
-  import Loading, { loading } from '../components/Loading.svelte'
-  import Error from '../components/Error.svelte'
+  import { auth } from '$data/auth'
+  import { notifications } from '$components/notifications'
+  import Input from '$components/Input.svelte'
+  import Loading, { loading } from '$components/Loading.svelte'
+  import Error from '$components/Error.svelte'
 
   let userCount = 0
   let signupForm

@@ -1,5 +1,5 @@
 <script>
- import { theme } from '../components/themes/ThemeLoader.svelte'
+ import { theme } from '$components/themes/ThemeLoader.svelte'
 </script>
 
 <h2>Settings</h2>

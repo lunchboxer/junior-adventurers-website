@@ -19,6 +19,10 @@ module.exports = {
     public: '/',
     src: '/dist',
   },
+  alias: {
+    $components: './src/components',
+    $data: './src/data',
+  },
   plugins: ['@snowpack/plugin-svelte'],
   routes: [
     /* Enable an SPA Fallback in development: */

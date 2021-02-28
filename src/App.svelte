@@ -1,10 +1,10 @@
 <script>
   import Router from 'svelte-spa-router'
-  import { NotificationList } from './components/notifications'
+  import { NotificationList } from '$components/notifications'
   import routes from './routes'
-  import Header from './components/Header.svelte'
-  import ThemeLoader from './components/themes/ThemeLoader.svelte'
-  import Footer from './components/Footer.svelte'
+  import Header from '$components/Header.svelte'
+  import ThemeLoader from '$components/themes/ThemeLoader.svelte'
+  import Footer from '$components/Footer.svelte'
 </script>
 
 <ThemeLoader />
