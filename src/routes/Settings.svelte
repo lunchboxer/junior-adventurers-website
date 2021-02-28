@@ -2,7 +2,7 @@
  import { theme } from '$components/themes/ThemeLoader.svelte'
 
  const systemTheme = matchMedia('(prefers-color-scheme: dark)') ? 'dark' : 'light'
- const actualTheme = $theme || systemTheme
+ $:actualTheme = $theme || systemTheme
 </script>
 
 <h2>Settings</h2>
