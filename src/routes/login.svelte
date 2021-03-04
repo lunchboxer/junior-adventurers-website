@@ -176,5 +176,8 @@
         class:is-loading={formLoading}>Log in</button
       >
     </form>
+  {:else if errors}
+    <h2>Login</h2>
+    <Error {errors} />
   {/if}
 </div>

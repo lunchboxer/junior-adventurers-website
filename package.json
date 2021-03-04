@@ -13,14 +13,14 @@
     "dev": "sapper dev",
     "build": "npm run minify-css && sapper build --legacy",
     "export:staging": "STAGE=staging npm run export",
-    "export:staging": "STAGE=production npm run export",
+    "export:prod": "STAGE=production npm run export",
     "export": "npm run minify-css && sapper export --legacy --entry '/ /not-found' && npm run mv404",
     "upload:staging": "STAGE=staging oss-upload __sapper__/export -o '/' -C",
     "upload:prod": "STAGE=production oss-upload __sapper__/export -o '/' -C",
     "upload": "npm run upload:staging && npm run upload:prod",
-    "deploy:staging": "npm run export && npm run upload:staging",
-    "deploy:prod": "npm run export && npm run upload:prod",
-    "deploy": "npm run export && npm run upload",
+    "deploy:staging": "npm run export:staging && npm run upload:staging",
+    "deploy:prod": "npm run export:prod && npm run upload:prod",
+    "deploy": "npm run deploy:staging && npm run deploy:prod",
     "start": "node __sapper__/build"
   },
   "dependencies": {

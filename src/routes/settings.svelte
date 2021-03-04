@@ -11,6 +11,10 @@
   $: actualTheme = $theme || systemTheme
 </script>
 
+<svelte:head>
+  <title>Settings</title>
+</svelte:head>
+
 <h2>Settings</h2>
 <p>Change your personal settings for experiencing the site.</p>
 

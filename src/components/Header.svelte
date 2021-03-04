@@ -36,14 +36,15 @@
       >
     </a>
   </h1>
-
-  <div class="menu-button" on:click={toggleMenu}>
-    {#if !shownav}
-      ☰
-    {:else}
-      ✕
-    {/if}
-  </div>
+  {#if $page.path !== '/'}
+    <div class="menu-button" on:click={toggleMenu}>
+      {#if !shownav}
+        ☰
+      {:else}
+        ✕
+      {/if}
+    </div>
+  {/if}
 </header>
 
 {#if ($page.path === '/' && !$page.error) || shownav}
