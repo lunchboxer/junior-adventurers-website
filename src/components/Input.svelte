@@ -15,8 +15,12 @@
   export let autocomplete = ''
   let passwordShowing = false
 
-  $: name = label.replace(/\W+(.)/g, (match, chr) => chr.toUpperCase())
-  $: descriptionId = `description${name}`
+  const randomCode = Math.floor((1 + Math.random()) * 0x10000)
+    .toString(32)
+
+  const name = label.toLowerCase().replace(/\W+/g, '-')
+  const id = name + randomCode
+  const descriptionId = `description${name}`
 
   function checkValidity() {
     error =
@@ -26,7 +30,7 @@
   }
 </script>
 
-<label class="label" for={name}>
+<label class="label" for={id}>
   {label}
   {#if description}
     <p class="help is-info" id={descriptionId}>{description}</p>
@@ -36,6 +40,7 @@
   <input
     bind:this={input}
     {name}
+    {id}
     class="input"
     bind:value
     class:error
