@@ -63,6 +63,7 @@
       <input
         bind:this={input}
         {name}
+        {id}
         class="input"
         bind:value
         class:error
@@ -82,6 +83,7 @@
       <input
         bind:this={input}
         {name}
+        {id}
         class="input"
         bind:value
         class:error
@@ -116,6 +118,7 @@
   <input
     bind:this={input}
     {name}
+    {id}          
     class="input"
     bind:value
     class:error
@@ -133,6 +136,7 @@
   <input
     bind:this={input}
     {name}
+    {id}
     class="input"
     bind:value
     class:error
@@ -149,6 +153,7 @@
   <input
     bind:this={input}
     {name}
+    {id}
     class="input"
     bind:value
     class:error
