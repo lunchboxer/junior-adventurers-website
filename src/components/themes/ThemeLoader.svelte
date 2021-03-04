@@ -2,7 +2,7 @@
   import { writable } from 'svelte/store'
 
   const createThemeStore = () => {
-    const chosenTheme = localStorage.getItem('theme')
+    const chosenTheme = typeof localStorage !== 'undefined' && localStorage.getItem('theme')
     let theme = chosenTheme
     if (chosenTheme) {
       const systemTheme = matchMedia('(prefers-color-scheme: dark)') ? 'dark' : 'light'

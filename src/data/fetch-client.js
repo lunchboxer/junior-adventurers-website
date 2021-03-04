@@ -1,7 +1,8 @@
-const endpoint = import.meta.env.SNOWPACK_PUBLIC_API_ENDPOINT
+const endpoint = process.env.API_ENDPOINT
 
 export const request = async (query, variables) => {
-  const coldAuth = window.localStorage.getItem('auth')
+  const coldAuth =
+    typeof localStorage !== 'undefined' && localStorage.getItem('auth')
   const token = coldAuth ? JSON.parse(coldAuth).token : undefined
   const body =
     typeof query === 'function'

@@ -1,11 +1,20 @@
 <script>
-  import { location } from 'svelte-spa-router'
-
   export let url = ''
   export let label = ''
+  export let segment
+  export let action = ''
+
+  const runAction = event => {
+    event.preventDefault()
+    action()
+  }
 </script>
 
-<a href="#/{url}" class:active={$location === '/' + url}>{label}</a>
+{#if action}
+    <a href="." on:click={runAction}>{label}</a>
+{:else}
+  <a href="{url}" class:active={segment === url}>{label}</a>
+{/if}
 
 <style>
   a {

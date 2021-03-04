@@ -4,7 +4,8 @@ import { LOGIN, CREATE_USER } from './mutations'
 import { USER_COUNT } from './queries'
 
 const getAuthFromStorage = () => {
-  const coldAuth = window.localStorage.getItem('auth')
+  const coldAuth =
+    typeof localStorage !== 'undefined' && localStorage.getItem('auth')
   const user = coldAuth ? JSON.parse(coldAuth).user : undefined
   const token = coldAuth ? JSON.parse(coldAuth).token : undefined
   return { user, token }
@@ -26,7 +27,7 @@ const createAuthStore = () => {
     },
     login: async (email, password) => {
       const response = await request(LOGIN, { email, password })
-      window.localStorage.setItem('auth', JSON.stringify(response.login))
+      localStorage.setItem('auth', JSON.stringify(response.login))
       update(previous => ({
         ...previous,
         ...response.login.user,
@@ -35,7 +36,7 @@ const createAuthStore = () => {
     },
     logout: () => {
       const { user } = getAuthFromStorage()
-      window.localStorage.removeItem('auth')
+      localStorage.removeItem('auth')
       set({})
       return user && user.email
     },

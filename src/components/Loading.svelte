@@ -13,15 +13,20 @@
 
 <script>
   import { fade } from 'svelte/transition'
-
-  export let what = ''
+  import { stores } from '@sapper/app'
+  const { preloading } = stores()
 </script>
 
-{#if $loading}
+{#if $loading || $preloading}
   <div transition:fade={{ duration: 200 }} class="loading">
     <div class="container">
-      <p class="loading">Loading ...</p>
-      <p class="what">{what}</p>
+      {#if typeof $loading === 'string'}
+        <p class="loading">Loading ...</p>
+        <p class="what">{$loading}</p>
+      {:else if $preloading }
+        <p class="loading">Loading ...</p>
+        <p class="what">page</p>
+      {/if}
       <div class="spinny" />
     </div>
   </div>

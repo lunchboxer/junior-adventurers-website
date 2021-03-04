@@ -1,13 +1,13 @@
 <script>
+  import { goto } from '@sapper/app'
   import { onMount } from 'svelte'
-  import { pop, push } from 'svelte-spa-router'
-  import { auth } from '$data/auth'
-  import { notifications } from '$components/notifications'
-  import Input from '$components/Input.svelte'
-  import Loading, { loading } from '$components/Loading.svelte'
-  import Error from '$components/Error.svelte'
+  import { auth } from '../data/auth'
+  import { notifications } from '../components/notifications'
+  import Input from '../components/Input.svelte'
+  import { loading } from '../components/Loading.svelte'
+  import Error from '../components/Error.svelte'
 
-  let userCount = 0
+  let userCount
   let signupForm
   let loginForm
   let formLoading = false
@@ -19,12 +19,12 @@
   let errors = ''
   let show = false
 
-  loading.set(true)
+  loading.set('user count')
 
   onMount(async () => {
     if ($auth.token) {
       notifications.add({ text: 'Already logged in.', type: 'danger' })
-      pop()
+      history.back()
       return
     }
     try {
@@ -54,7 +54,7 @@
         text: `Logged in wih email: ${email}`,
         type: 'success',
       })
-      push('/')
+      goto('/')
     } catch (error) {
       errors = error
       notifications.add({
@@ -83,7 +83,7 @@
         text: `Created a new user account with email: ${email}`,
         type: 'success',
       })
-      push('/')
+      goto('/')
     } catch (error) {
       errors = error
       notifications.add({
@@ -99,16 +99,16 @@
   const reset = () => {
     password = ''
     email = ''
-    pop()
+    history.back()
   }
 </script>
 
-<Loading what="User count"/>
+<svelte:head>
+  <title>Log in</title>
+</svelte:head>
 
 <div class="hider" class:show>
-
   {#if userCount === 0}
-
     <h2>Sign up</h2>
     <p>It looks like you are the first user in the system</p>
 
@@ -143,9 +143,7 @@
         class:is-loading={formLoading}>Sign up</button
       >
     </form>
-  
-  {:else}
-
+  {:else if userCount > 0}
     <h2>Log in</h2>
 
     <Error {errors} />
@@ -180,13 +178,3 @@
     </form>
   {/if}
 </div>
-
-<style>
-  .hider {
-    opacity: 0;
-    transition: opacity 1s;
-  }
-  .hider.show {
-    opacity: 100%;
-  }
-</style>

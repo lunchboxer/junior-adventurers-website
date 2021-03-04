@@ -1,8 +1,8 @@
 <script>
+  import { goto } from '@sapper/app'
   import { onMount } from 'svelte'
-  import { pop, push } from 'svelte-spa-router'
-  import { notifications } from '$components/notifications'
-  import { auth } from '$data/auth'
+  import { notifications } from '../components/notifications'
+  import { auth } from '../data/auth'
 
   async function wait(ms) {
     return new Promise(resolve => {
@@ -16,13 +16,13 @@
         text: 'Cannot log out. User not logged in.',
         type: 'danger',
       })
-      pop()
+      history.back()
       return
     }
     const email = await auth.logout()
     notifications.add({ text: `Logged out user ${email}`, type: 'success' })
     await wait(1500)
-    push('/')
+    goto('/')
   })
 </script>
 
