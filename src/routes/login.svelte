@@ -4,7 +4,7 @@
   import { auth } from '../data/auth'
   import { notifications } from '../components/notifications'
   import Input from '../components/Input.svelte'
-  import { loading } from '../components/Loading.svelte'
+  import Loading from '../components/Loading.svelte'
   import Error from '../components/Error.svelte'
 
   let userCount
@@ -18,8 +18,7 @@
   let email = ''
   let errors = ''
   let show = false
-
-  loading.set('user count')
+  let loading = true
 
   onMount(async () => {
     if ($auth.token) {
@@ -32,7 +31,7 @@
     } catch (error) {
       errors = error
     } finally {
-      loading.set(false)
+      loading = false
       show = true
     }
   })
@@ -47,7 +46,7 @@
       return
     }
     formLoading = true
-    loginSubmit.diabled = true
+    loginSubmit.disabled = true
     try {
       await auth.login(email, password)
       notifications.add({
@@ -76,7 +75,7 @@
       return
     }
     formLoading = true
-    signupSubmit.diabled = true
+    signupSubmit.disabled = true
     try {
       await auth.createUser(name, email, password)
       notifications.add({
@@ -107,77 +106,81 @@
   <title>Log in</title>
 </svelte:head>
 
-<div class="hider" class:show>
-  {#if userCount === 0}
-    <h2>Sign up</h2>
-    <p>It looks like you are the first user in the system</p>
+{#if loading}
+  <Loading what="user count" />
+{:else}
+  <div class="hider" class:show>
+    {#if userCount === 0}
+      <h2>Sign up</h2>
+      <p>It looks like you are the first user in the system</p>
 
-    <Error {errors} />
+      <Error {errors} />
 
-    <form
-      bind:this={signupForm}
-      novalidate
-      on:submit|preventDefault={signup}
-      on:reset|preventDefault={reset}
-    >
-      <Input label="Name" bind:value={name} autocomplete="name" />
-      <Input
-        label="Email"
-        type="email"
-        bind:value={email}
-        required
-        autocomplete="username"
-      />
-
-      <Input
-        label="Password"
-        type="password"
-        bind:value={password}
-        required
-        autocomplete="new-password"
-      />
-      <button type="reset" class="button-outline">Cancel</button>
-      <button
-        type="submit"
-        bind:this={signupSubmit}
-        class:is-loading={formLoading}>Sign up</button
+      <form
+        bind:this={signupForm}
+        novalidate
+        on:submit|preventDefault={signup}
+        on:reset|preventDefault={reset}
       >
-    </form>
-  {:else if userCount > 0}
-    <h2>Log in</h2>
+        <Input label="Name" bind:value={name} autocomplete="name" />
+        <Input
+          label="Email"
+          type="email"
+          bind:value={email}
+          required
+          autocomplete="username"
+        />
 
-    <Error {errors} />
+        <Input
+          label="Password"
+          type="password"
+          bind:value={password}
+          required
+          autocomplete="new-password"
+        />
+        <button type="reset" class="button-outline">Cancel</button>
+        <button
+          type="submit"
+          bind:this={signupSubmit}
+          class:is-loading={formLoading}>Sign up</button
+        >
+      </form>
+    {:else if userCount > 0}
+      <h2>Log in</h2>
 
-    <form
-      bind:this={loginForm}
-      novalidate
-      on:submit|preventDefault={login}
-      on:reset|preventDefault={reset}
-    >
-      <Input
-        label="Email"
-        bind:value={email}
-        required
-        disabled={formLoading}
-        autocomplete="username"
-      />
-      <Input
-        label="Password"
-        bind:value={password}
-        required
-        disabled={formLoading}
-        type="password"
-        autocomplete="current-password"
-      />
-      <button type="reset" class="button-outline">Cancel</button>
-      <button
-        type="submit"
-        bind:this={loginSubmit}
-        class:is-loading={formLoading}>Log in</button
+      <Error {errors} />
+
+      <form
+        bind:this={loginForm}
+        novalidate
+        on:submit|preventDefault={login}
+        on:reset|preventDefault={reset}
       >
-    </form>
-  {:else if errors}
-    <h2>Login</h2>
-    <Error {errors} />
-  {/if}
-</div>
+        <Input
+          label="Email"
+          bind:value={email}
+          required
+          disabled={formLoading}
+          autocomplete="username"
+        />
+        <Input
+          label="Password"
+          bind:value={password}
+          required
+          disabled={formLoading}
+          type="password"
+          autocomplete="current-password"
+        />
+        <button type="reset" class="button-outline">Cancel</button>
+        <button
+          type="submit"
+          bind:this={loginSubmit}
+          class:is-loading={formLoading}>Log in</button
+        >
+      </form>
+    {:else if errors}
+      <h2>Login</h2>
+      <Error {errors} />
+    {/if}
+  </div>
+{/if}

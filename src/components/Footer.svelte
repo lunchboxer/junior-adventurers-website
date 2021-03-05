@@ -16,7 +16,7 @@
   footer {
     width: 100%;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     position: absolute;
     right: 0;
     left: 0;

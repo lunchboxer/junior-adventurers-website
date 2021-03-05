@@ -1,49 +1,31 @@
-<script context="module">
-  import { writable } from 'svelte/store'
-
-  const createLoadingStore = () => {
-    const { subscribe, set } = writable(false)
-    return {
-      subscribe,
-      set,
-    }
-  }
-  export const loading = createLoadingStore()
-</script>
-
 <script>
   import { fade } from 'svelte/transition'
-  import { stores } from '@sapper/app'
-  const { preloading } = stores()
+
+  export let what = ''
 </script>
 
-{#if $loading || $preloading}
-  <div transition:fade={{ duration: 200 }} class="loading">
-    <div class="container">
-      {#if typeof $loading === 'string'}
-        <p class="loading">Loading ...</p>
-        <p class="what">{$loading}</p>
-      {:else if $preloading }
-        <p class="loading">Loading ...</p>
-        <p class="what">page</p>
-      {/if}
-      <div class="spinny" />
-    </div>
+<div transition:fade={{ duration: 200 }} class="loading">
+  <div class="container">
+    {#if what}
+      <p class="loading">Loading ...</p>
+      <p class="what">{what}</p>
+    {/if}
+    <div class="spinny" />
   </div>
-{/if}
+</div>
 
 <style>
   .loading {
     font-size: 2rem;
-      margin: 0;
+    margin: 0;
   }
- p {
-     font-size: 2rem;
-     margin: 0;
- }
+  p {
+    font-size: 2rem;
+    margin: 0;
+  }
   div.loading {
     position: fixed;
-    z-index: 999;
+    z-index: 98;
     top: 0;
     left: 0;
     bottom: 0;

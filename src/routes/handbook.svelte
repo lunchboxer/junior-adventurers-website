@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Settings</title>
+  <title>Handbook</title>
 </svelte:head>
 
 <h2>Handbook</h2>

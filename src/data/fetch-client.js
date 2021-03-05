@@ -4,10 +4,7 @@ export const request = async (query, variables) => {
   const coldAuth =
     typeof localStorage !== 'undefined' && localStorage.getItem('auth')
   const token = coldAuth ? JSON.parse(coldAuth).token : undefined
-  const body =
-    typeof query === 'function'
-      ? query(variables)
-      : JSON.stringify({ query, variables })
+  const body = JSON.stringify({ query, variables })
   const response = await fetch(endpoint, {
     method: 'post',
     headers: {
@@ -20,6 +17,7 @@ export const request = async (query, variables) => {
   if (response && response.ok && !result.errors && result.data) {
     return result.data
   } else {
+    if (process.env.NODE_ENV === 'development') console.error(result.errors)
     throw result.errors
   }
 }

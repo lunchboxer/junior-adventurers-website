@@ -7,4 +7,5 @@
  document.documentElement.style.setProperty('--color-on-primary', '#000')
  document.documentElement.style.setProperty('--header-color', 'var(--primary-color)')
  document.documentElement.style.setProperty('--header-bg', 'var(--background-overlay-color)')
+ document.documentElement.style.setProperty('--error-color', '#ff8888')
 </script>

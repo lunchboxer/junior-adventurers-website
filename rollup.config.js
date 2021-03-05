@@ -8,6 +8,8 @@ import babel from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 import config from 'sapper/config/rollup.js'
 import package_ from './package.json'
+import alias from '@rollup/plugin-alias'
+import graphql from '@rollup/plugin-graphql'
 require('dotenv').config()
 
 const mode = process.env.NODE_ENV
@@ -50,6 +52,19 @@ export default {
       url({
         sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
         publicPath: '/client/',
+      }),
+      graphql(),
+      alias({
+        entries: [
+          {
+            find: '$components',
+            replacement: path.resolve(__dirname, 'src/components'),
+          },
+          {
+            find: '$data',
+            replacement: path.resolve(__dirname, 'src/data'),
+          },
+        ],
       }),
       resolve({
         browser: true,
@@ -114,6 +129,19 @@ export default {
         sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
         publicPath: '/client/',
         emitFiles: false, // already emitted by client build
+      }),
+      graphql(),
+      alias({
+        entries: [
+          {
+            find: '$components',
+            replacement: path.resolve(__dirname, 'src/components'),
+          },
+          {
+            find: '$data',
+            replacement: path.resolve(__dirname, 'src/data'),
+          },
+        ],
       }),
       resolve({
         dedupe: ['svelte'],

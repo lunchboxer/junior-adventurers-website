@@ -53,7 +53,7 @@
     on:click={() => {
       shownav = false
     }}
-    transition:fly={{ x: -200, duration: 200 }}
+    transition:fly={{ y: 200, duration: 200 }}
   >
     <NavLink {segment} url="students" label="Students" />
     <NavLink {segment} url="uoi" label="Units of Inquiry" />
@@ -74,8 +74,8 @@
     z-index: 99;
     position: absolute;
     top: 7rem;
-    left: 0;
-    text-align: center;
+    right: 0;
+    text-align: right;
   }
   .title {
     padding-right: 1rem;

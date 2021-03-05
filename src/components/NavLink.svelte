@@ -18,11 +18,10 @@
 
 <style>
   a {
-    float: left;
-    clear: left;
+    text-align: right;
+    float: right;
+    clear: right;
     width: auto;
-    transition-property: font-size, margin, padding;
-    transition-duration: 0.5s;
     text-decoration: none;
     font-size: 2.8rem;
     font-weight: 200;
