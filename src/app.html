@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#333333" />
+
+    <title>Junior Adventurers</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="stylesheet" href="global.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#7b71aa" />
+    <meta
+      name="description"
+      content="Information management system for 2nd grade primary classes"
+    />
+
+    <style>
+       :root {
+           color-scheme: light dark;
+         --alt-background: #f4f5f6;
+         --color-on-primary: white;
+         --background: white;
+         --base-color: #222222;
+         --primary-color: #7b71aa;
+         --background-overlay-color: rgba(255, 255, 255, 0.7);
+         --header-color: var(--color-on-primary);
+         --header-bg: var(--primary-color);
+         --error-color: #cc0000;
+       }
+       @media (prefers-color-scheme: dark) {
+         :root {
+           --alt-background: #222;
+           --color-on-primary: #000;
+           --background: #222;
+           --base-color: #eee;
+           --primary-color: #b1a5e2;
+           --background-overlay-color: rgba(0, 0, 0, 0.7);
+           --header-color: var(--primary-color);
+           --header-bg: var(--background-overlay-color);
+           --error-color: #ff8888;
+         }
+       }
+       @font-face {
+         font-family: "IBM Plex Mono";
+         font-style: normal;
+         font-weight: 300;
+         font-display: swap;
+         src: url(https://static.orchard.ltd/lib/ibm-plex-mono-latin-ext.woff2)
+           format("woff2");
+         unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
+           U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+       }
+       @font-face {
+         font-family: "IBM Plex Mono";
+         font-style: normal;
+         font-weight: 300;
+         font-display: swap;
+         src: url(https://static.orchard.ltd/lib/ibm-plex-mono-latin.woff2)
+           format("woff2");
+         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+           U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+           U+2212, U+2215, U+FEFF, U+FFFD;
+       }
+       body,
+       html {
+         font-family: "IBM Plex Mono", "Ubuntu Mono", monospace;
+         margin: 0;
+         padding: 0;
+         font-size: 1.6em;
+         font-weight: 300;
+         letter-spacing: 0.01em;
+         line-height: 1.6;
+         color: var(--base-color);
+       }
+       html {
+         background: linear-gradient(
+             var(--background-overlay-color),
+             var(--background-overlay-color)
+           ),
+           url(mountains-banner.webp) no-repeat center center fixed;
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+         box-sizing: border-box;
+         font-size: 62.5%;
+         height: 100%;
+       }
+       body {
+         min-height: 100%;
+         position: relative;
+         padding-bottom: 4rem;
+       }
+       *,
+       :after,
+       :before {
+         box-sizing: inherit;
+       }
+      .title {
+          2.5rem;
+      }
+    </style>
+    %svelte.head%
+  </head>
+  <body>
+    <div id="svelte">%svelte.body%</div>
+  </body>
+</html>

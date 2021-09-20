@@ -1,0 +1,38 @@
+{
+  "name": "ja-sveltekit",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "mv404": "mv build/not-found/index.html build/404.html",
+    "build:staging": "VITE_ENV=staging svelte-kit build",
+    "build:prod": "VITE_ENV=production svelte-kit build",
+    "preview": "svelte-kit preview",
+    "upload:staging": "STAGE=staging oss-upload build -o '/' -C -c ./oss.config.cjs",
+    "upload:prod": "STAGE=production oss-upload build -o '/' -C -c ./oss.config.cjs",
+    "deploy:staging": "npm run build:staging && npm run minify-css && npm run mv404 && npm run upload:staging",
+    "deploy:prod": "npm run build:prod && npm run minify-css && npm run mv404 && npm run upload:prod",
+    "deploy": "npm run deploy:staging && npm run deploy:prod",
+    "lint": "eslint --ignore-path .gitignore src --fix",
+    "minify-css": "postcss build/global.css > build/global.min.css"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^1.0.0-next.19",
+    "@sveltejs/kit": "next",
+    "ali-oss-upload-cli": "^1.4.1",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-svelte3": "^3.2.1",
+    "eslint-plugin-unicorn": "^27.0.0",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "prettier": "^2.4.1",
+    "prettier-plugin-svelte": "^2.4.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "svelte": "^3.42.6"
+  },
+  "type": "module"
+}
