@@ -8,7 +8,9 @@ const createStudentStore = () => {
     subscribe,
     get: async key => {
       if (!key) return
+      console.log('getStudent called')
       const getResponse = await request(GET_STUDENT, { key })
+      console.log(getResponse)
       set(getResponse.student)
     },
     delete: async key => {

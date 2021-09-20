@@ -1,10 +1,5 @@
-<script context="module">
-  export async function preload({ params }) {
-    return params
-  }
-</script>
-
 <script>
+  import { page } from '$app/stores'
   import { student } from './_data'
   import { goto } from '$app/navigation'
 
@@ -15,7 +10,7 @@
   import EditIcon from '$lib/icons/EditIcon.svelte'
   import EditStudentForm from './_EditStudentForm.svelte'
 
-  export let key
+  const { key } = $page.params
 
   let showForm = false
   let errors = ''
@@ -23,6 +18,10 @@
   let showConfirm = false
   let deleteButton
   let deleting = false
+
+  $: console.log(key)
+
+  $: console.log($student)
 
   onMount(async () => {
     try {
