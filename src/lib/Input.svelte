@@ -1,4 +1,5 @@
 <script>
+  import { nanoid } from 'nanoid'
   let input
   export let disabled = false
   export let value = ''
@@ -15,7 +16,7 @@
   export let autocomplete = ''
   let passwordShowing = false
 
-  const randomCode = Math.floor((1 + Math.random()) * 0x10000).toString(32)
+  const randomCode = nanoid(8)
 
   const name = label.toLowerCase().replace(/\W+/g, '-')
   const id = name + randomCode

@@ -1,13 +1,12 @@
 import { writable } from 'svelte/store'
+import { nanoid } from 'nanoid'
 
 const selfDestructDelay = 4000 // milliseconds
 
 const generateKey = () => {
-  // timestamp with 4 random characters on the end
+  // timestamp with 8 random characters
   const now = new Date()
-  const randomCode = Math.floor((1 + Math.random()) * 0x10000)
-    .toString(16)
-    .slice(1)
+  const randomCode = nanoid(8)
   return now.toISOString() + randomCode
 }
 
