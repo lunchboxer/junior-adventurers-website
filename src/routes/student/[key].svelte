@@ -19,10 +19,6 @@
   let deleteButton
   let deleting = false
 
-  $: console.log(key)
-
-  $: console.log($student)
-
   onMount(async () => {
     try {
       await student.get(key)
