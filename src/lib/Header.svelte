@@ -60,6 +60,7 @@
     <NavLink {segment} url="/schedule" label="Schedule" />
     {#if $auth && $auth.token}
       <NavLink {segment} action={logout} label="Log out" />
+      <NavLink {segment} url="/tools" label="Tools" />
     {/if}
     {#if $auth && !$auth.token}
       <NavLink {segment} url="/login" label="Login" />
