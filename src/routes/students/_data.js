@@ -16,7 +16,6 @@ const createStudentStore = () => {
     update,
     get: async () => {
       const getResponse = await request(GET_STUDENTS)
-      console.log(alphaSort(getResponse.students))
       set(alphaSort(getResponse.students))
     },
     create: async input => {

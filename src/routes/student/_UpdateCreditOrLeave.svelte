@@ -15,14 +15,14 @@
 
   const updateCredits = async () => {
     loading = true
-    if (!value >= 0) return
+    saveSubmit.disabled = true
     try {
-      await student.patch({ ...studentData, credit: value })
+      await student.patch({ ...studentData })
       toggleOpen()
       students.update(previous =>
         previous.map(student => {
           if (student.key === studentData.key) {
-            return { ...student, credit: value }
+            return { ...student, credit: studentData.credit }
           }
           return student
         }),
@@ -40,8 +40,12 @@
 
 <Error {errors} />
 {#if open}
-  <input type="number" min="0" bind:value />
-  <button bind:this={saveSubmit} on:click={updateCredits}>save</button>
+  <input type="number" min="0" bind:value={studentData.credit} />
+  <button
+    bind:this={saveSubmit}
+    class:is-loading={loading}
+    on:click={updateCredits}>save</button
+  >
   <button on:click={toggleOpen} class="button-outline">cancel</button>
 {:else}
   <button on:click={toggleOpen}>Change</button>
