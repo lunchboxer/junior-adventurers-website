@@ -5,6 +5,7 @@ export const GET_STUDENT = `
       name
       birthdate
       languages
+      credit
     }
   }`
 
@@ -16,9 +17,10 @@ export const DELETE_STUDENT = `
   }`
 
 export const UPDATE_STUDENT = `
-  mutation UpdateStudent ($key: ID!, $name: String, $birthdate: String, $languages: String) {
-    updateStudent (key: $key, name: $name, birthdate: $birthdate, languages: $languages) {
+  mutation UpdateStudent ($key: ID!, $name: String, $birthdate: String, $languages: String, $credit: Int) {
+    updateStudent (key: $key, name: $name, birthdate: $birthdate, languages: $languages, credit: $credit) {
       key
+      credit
       name
       birthdate
       languages

@@ -2,6 +2,8 @@
   import { students } from './_data'
   import Loading from '$lib/Loading.svelte'
   import Error from '$lib/Error.svelte'
+  import ResetCredits from './_ResetCredits.svelte'
+  import UpdateCreditOrLeave from '../student/_UpdateCreditOrLeave.svelte'
   import { onMount } from 'svelte'
   import { notifications } from '$lib/notifications'
 
@@ -32,21 +34,22 @@
     {#if $students.length === 0}
       <p>There are no students in the database yet.</p>
     {:else}
+      <ResetCredits bind:errors />
       <p>There are {$students.length} students in the database.</p>
       <table>
         <thead>
           <tr>
             <th>Name</th>
-            <th>Birthdate</th>
-            <th>Languages</th>
+            <th>Credits</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {#each $students as student}
             <tr>
               <td><a href="/student/{student.key}">{student.name}</a></td>
-              <td>{student.birthdate}</td>
-              <td>{student.languages || ''}</td>
+              <td>{student.credit}</td>
+              <td><UpdateCreditOrLeave studentData={student} /></td>
             </tr>
           {/each}
         </tbody>
