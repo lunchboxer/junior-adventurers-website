@@ -15,7 +15,7 @@
 
   const updateCredits = async () => {
     loading = true
-    if (!value > 0) return
+    if (!value >= 0) return
     try {
       await student.patch({ ...studentData, credit: value })
       toggleOpen()
