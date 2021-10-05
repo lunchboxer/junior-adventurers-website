@@ -7,7 +7,6 @@
   let errors
   let loading = false
   let saveSubmit
-  let value = studentData.credit
 
   const toggleOpen = () => {
     open = !open

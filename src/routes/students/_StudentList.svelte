@@ -35,7 +35,7 @@
       <p>There are no students in the database yet.</p>
     {:else}
       <ResetCredits bind:errors />
-      <p>There are {$students.length} students in the database.</p>
+      <p>{$students.length} students</p>
       <table>
         <thead>
           <tr>
