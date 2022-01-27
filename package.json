@@ -27,7 +27,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-svelte3": "^3.2.1",
     "eslint-plugin-unicorn": "^36.0.0",
-    "nanoid": "^3.1.25",
+    "nanoid": "^3.1.31",
     "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
     "prettier": "^2.4.1",
